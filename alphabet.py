@@ -13,8 +13,8 @@ class Alphabet:
         self.upper_letters_list.extend([chr(i) for i in range(ord("A"), ord("Z"))])
         return self.upper_letters_list
 
-    def numbers(self,start=0,end=10):
-        self.number_list.extend([str(i) for i in range(start,end)])
+    def numbers(self, start=0, end=10):
+        self.number_list.extend([str(i) for i in range(start, end)])
         return self.number_list
 
     def chars_nums(self):

@@ -1,12 +1,14 @@
 from alphabet import Alphabet
 OPERATIONS = ['encode', 'decode']
+
+
 class CifoCifer:
     def __init__(self):
         self.range_crypt_chars = []
         self.new_text = ''
         self.origin_text = ''
 
-    def action(self,need_to='encode', text='demo', shift=0):
+    def action(self, need_to='encode', text='demo', shift=0):
         self.clear_all()
         self.origin_text = text
         if need_to.lower() in OPERATIONS:
@@ -15,8 +17,6 @@ class CifoCifer:
             shift_amount = int(shift) % len(self.range_crypt_chars)
             if need_to == 'decode':
                 shift_amount *= (-1)
-            #print(f'lengh of list {len(self.range_crypt_chars)}')   # for debugging
-            #print(f'shift : {shift_amount}')    # for debugging
             for letter in text:
                 if letter in self.range_crypt_chars:
                     position = self.range_crypt_chars.index(letter)
@@ -43,9 +43,3 @@ class CifoCifer:
         if file_name:
             with open(f'{file_name}.txt', mode='w') as f_output:
                 f_output.write(self.new_text)
-
-
-
-
-
-
