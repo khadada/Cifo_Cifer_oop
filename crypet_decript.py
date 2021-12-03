@@ -21,7 +21,7 @@ class CifoCifer:
                 if letter in self.range_crypt_chars:
                     position = self.range_crypt_chars.index(letter)
                     new_position = position + shift_amount
-                    while new_position > len(self.range_crypt_chars):
+                    while new_position >= len(self.range_crypt_chars):
                         new_position %= len(self.range_crypt_chars)
                     new_letter = self.range_crypt_chars[new_position]
                     self.new_text += new_letter
@@ -32,8 +32,11 @@ class CifoCifer:
             print(f'Sorry {need_to} is in valid value for action')
 
     def get_origin(self):
-        print(f'The original text is: [{self.origin_text}]')
+        #print(f'The original text is: [{self.origin_text}]')
         return self.origin_text
+
+    def get_new_text(self):
+        return self.new_text
 
     def clear_all(self):
         self.new_text = ''
@@ -41,5 +44,10 @@ class CifoCifer:
 
     def export(self, file_name):
         if file_name:
-            with open(f'{file_name}.txt', mode='w') as f_output:
+            with open(f'{file_name}', mode='w') as f_output:
                 f_output.write(self.new_text)
+
+    def import_f(self, file_path):
+        with open(f'{file_path}', mode='r') as f_read:
+            self.origin_text = f_read.read()
+            return self.origin_text
